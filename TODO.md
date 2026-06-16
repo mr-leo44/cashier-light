@@ -18,8 +18,8 @@ Application de gestion de caisse scolaire développée avec :
 
 ## Backend
 
-* [ ] Créer le projet NestJS
-* [ ] Configurer TypeScript
+* [x] Créer le projet NestJS
+* [x] Configurer TypeScript
 * [ ] Installer PostgreSQL
 * [ ] Installer Prisma
 * [ ] Configurer Prisma Client
