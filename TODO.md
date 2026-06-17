@@ -20,17 +20,17 @@ Application de gestion de caisse scolaire développée avec :
 
 * [x] Créer le projet NestJS
 * [x] Configurer TypeScript
-* [ ] Installer PostgreSQL
-* [ ] Installer Prisma
-* [ ] Configurer Prisma Client
-* [ ] Configurer les variables d'environnement
+* [x] Installer PostgreSQL
+* [x] Installer Prisma
+* [x] Configurer Prisma Client
+* [x] Configurer les variables d'environnement
 * [ ] Configurer ValidationPipe globale
 * [ ] Configurer Exception Filter global
 * [ ] Configurer Logger NestJS
 
 ## Structure du projet
 
-* [ ] Module Prisma
+* [x] Module Prisma
 * [ ] Module SchoolYear
 * [ ] Module Receipt
 * [ ] Module Report
@@ -46,11 +46,7 @@ Application de gestion de caisse scolaire développée avec :
 
 ## Enum FeeType
 
-* [ ] INSCRIPTION
-* [ ] MINERVAL
-* [ ] EXAMEN
-* [ ] BULLETIN
-* [ ] AUTRE
+Cfr la liste à fournir
 
 ---
 

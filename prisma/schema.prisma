@@ -10,3 +10,65 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum Currency {
+  USD
+  CDF
+}
+
+model FeeType {
+  id        String @id @default(uuid())
+  name      String @unique
+  isActive  Boolean @default(true)
+
+  receipts  Receipt[]
+}
+
+model SchoolYear {
+  id         String    @id @default(uuid())
+
+  label      String    @unique
+
+  isCurrent  Boolean   @default(false)
+
+  receipts   Receipt[]
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@map("school_years")
+}
+
+model Receipt {
+  id            String   @id @default(uuid())
+
+  receiptNumber String   @unique
+
+  studentName   String
+
+  feeTypeId String
+  
+  feeType   FeeType @relation(fields: [feeTypeId], references: [id])
+  
+  currency      Currency
+
+  amount        Decimal  @db.Decimal(18,2)
+
+  cashierName   String
+
+  paymentDate   DateTime @default(now())
+
+  schoolYearId  String
+
+  schoolYear    SchoolYear @relation(fields: [schoolYearId], references: [id])
+
+  createdAt     DateTime @default(now())
+
+  updatedAt     DateTime @updatedAt
+
+  @@index([studentName])
+  @@index([paymentDate])
+  @@index([schoolYearId])
+
+  @@map("receipts")
+}
