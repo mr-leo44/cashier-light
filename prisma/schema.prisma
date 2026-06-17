@@ -46,10 +46,10 @@ model Receipt {
 
   studentName   String
 
-  feeTypeId String
-  
-  feeType   FeeType @relation(fields: [feeTypeId], references: [id])
-  
+  feeTypeId     String
+
+  feeType       FeeType @relation(fields: [feeTypeId], references: [id])
+
   currency      Currency
 
   amount        Decimal  @db.Decimal(18,2)
@@ -69,6 +69,7 @@ model Receipt {
   @@index([studentName])
   @@index([paymentDate])
   @@index([schoolYearId])
+  @@index([feeTypeId])
 
   @@map("receipts")
 }
