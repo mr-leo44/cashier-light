@@ -2,12 +2,14 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateReceiptDto } from './dto/create-receipt.dto';
 import { ReceiptNumberGeneratorService } from './services/receipt-number-generator.service';
+import { ReceiptPdfService } from './services/receipt-pdf.service';
 
 @Injectable()
 export class ReceiptsService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly generator: ReceiptNumberGeneratorService,
+    private readonly pdfService: ReceiptPdfService,
   ) {}
 
   async create(dto: CreateReceiptDto) {
@@ -76,5 +78,9 @@ export class ReceiptsService {
     }
 
     return receipt;
+  }
+
+  async generatePdf(id: string) {
+    return this.pdfService.generate(id);
   }
 }

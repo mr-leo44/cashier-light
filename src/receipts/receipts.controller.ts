@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
+import type { Response } from 'express';
 import { ReceiptsService } from './receipts.service';
 import { CreateReceiptDto } from './dto/create-receipt.dto';
 
@@ -19,5 +20,17 @@ export class ReceiptsController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.receiptsService.findOne(id);
+  }
+
+  @Get(':id/pdf')
+  async generatePdf(@Param('id') id: string, @Res() res: Response) {
+    const pdfBuffer = await this.receiptsService.generatePdf(id);
+
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="receipt-${id}.pdf"`,
+    });
+
+    res.send(pdfBuffer);
   }
 }
