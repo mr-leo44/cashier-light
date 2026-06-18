@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { SchoolYearsModule } from './school-years/school-years.module';
+import { ReceiptsModule } from './receipts/receipts.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { SchoolYearsModule } from './school-years/school-years.module';
     }),
     PrismaModule,
     SchoolYearsModule,
+    ReceiptsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
