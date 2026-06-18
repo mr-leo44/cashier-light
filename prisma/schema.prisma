@@ -17,11 +17,19 @@ enum Currency {
 }
 
 model FeeType {
-  id        String @id @default(uuid())
-  name      String @unique
-  isActive  Boolean @default(true)
+  id        String    @id @default(uuid())
+
+  code      String    @unique
+  name      String    @unique
+
+  isActive  Boolean   @default(true)
 
   receipts  Receipt[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("fee_types")
 }
 
 model SchoolYear {
